@@ -1,7 +1,9 @@
 urllib3
 scikit-learn
-keras
+keras==2.3.1
+tensorflow-gpu==1.15.4
 numpy
+scipy
 pandas
 matplotlib
 seaborn
