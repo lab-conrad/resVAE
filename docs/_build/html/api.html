@@ -1,0 +1,882 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>resVAE API &mdash; resVAE  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> resVAE
+          
+
+          
+            
+            <img src="_static/Icon.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2.0a
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic_usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">resVAE API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-resVAE.resvae">Main class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-resVAE.reporting">Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-resVAE.utils">Utility functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-resVAE.config">Configuration file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">resVAE</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>resVAE API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="project-name-api">
+<h1>resVAE API<a class="headerlink" href="#project-name-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-resVAE.resvae">
+<span id="main-class"></span><h2>Main class<a class="headerlink" href="#module-resVAE.resvae" title="Permalink to this headline">¶</a></h2>
+<p>This module contains the main code for generating and fitting a class-aware variational autoencoder.</p>
+<dl class="class">
+<dt id="resVAE.resvae.resVAE">
+<em class="property">class </em><code class="sig-prename descclassname">resVAE.resvae.</code><code class="sig-name descname">resVAE</code><span class="sig-paren">(</span><em class="sig-param">model_dir</em>, <em class="sig-param">config</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main class for the resVAE architecture.</p>
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.add_latent_labels">
+<code class="sig-name descname">add_latent_labels</code><span class="sig-paren">(</span><em class="sig-param">classes</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.add_latent_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to infer the latent variable dimension labels from the class labels and add it to the model. Labels can also be added manually trough modifying the .classes variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>classes</strong> – List of strings containing the class labels</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.build">
+<code class="sig-name descname">build</code><span class="sig-paren">(</span><em class="sig-param">update: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that constructs the resVAE architecture, including both the encoder and decoder parts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the encoder, decoder, and complete resVAE keras models</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.calc_ch_score">
+<code class="sig-name descname">calc_ch_score</code><span class="sig-paren">(</span><em class="sig-param">exprs=None</em>, <em class="sig-param">normalized: bool = True</em>, <em class="sig-param">target='genes'</em>, <em class="sig-param">source='latent'</em>, <em class="sig-param">permute=10</em>, <em class="sig-param">direction=True</em>, <em class="sig-param">index_source=1</em>, <em class="sig-param">index_target=1</em>, <em class="sig-param">use_negative=False</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.calc_ch_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to calculate the Calinski-Harabasz score (Variance Ratio Criterion) on the different layers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exprs</strong> – Expression matrix. Numpy array of shape samples x features</p></li>
+<li><p><strong>normalized</strong> – Whether to normalize results by feature (default: True)</p></li>
+<li><p><strong>target</strong> – Whether the target is ‘genes’ or a decoder layer ‘neurons’ (default: ‘genes’)</p></li>
+<li><p><strong>source</strong> – The source layer, ‘latent’ or ‘neurons’ (default: ‘latent’)</p></li>
+<li><p><strong>permute</strong> – How many random permutations to perform (default: 10)</p></li>
+<li><p><strong>direction</strong> – Whether to use directionality of weights instead of absolute values (default: True)</p></li>
+<li><p><strong>index_source</strong> – Which source layer to use with neuron to gene mappings (default: 1)</p></li>
+<li><p><strong>index_target</strong> – Which target layer to use with latent to neuron mappings (default: 1)</p></li>
+<li><p><strong>use_negative</strong> – Whether to use negative weights in the calculation (default: False)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>two 1D numpy array with the scores, one with real scores, the second for permutations</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.calc_fpc">
+<code class="sig-name descname">calc_fpc</code><span class="sig-paren">(</span><em class="sig-param">normalized: bool = True</em>, <em class="sig-param">target='genes'</em>, <em class="sig-param">source='latent'</em>, <em class="sig-param">direction=True</em>, <em class="sig-param">index_source=1</em>, <em class="sig-param">index_target=1</em>, <em class="sig-param">use_negative=False</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.calc_fpc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to calculate the fuzzy partition coefficient on the different weight matrices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>normalized</strong> – Whether to normalize results by feature (default: True)</p></li>
+<li><p><strong>target</strong> – Whether the target is ‘genes’ or a decoder layer ‘neurons’ (default: ‘genes’)</p></li>
+<li><p><strong>source</strong> – The source layer, ‘latent’ or ‘neurons’ (default: ‘latent’)</p></li>
+<li><p><strong>direction</strong> – Whether to use directionality of weights instead of absolute values (default: True)</p></li>
+<li><p><strong>index_source</strong> – Which source layer to use with neuron to gene mappings (default: 1)</p></li>
+<li><p><strong>index_target</strong> – Which target layer to use with latent to neuron mappings (default: 1)</p></li>
+<li><p><strong>use_negative</strong> – Whether to use negative weights in the calculation (default: False)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the FPC for the actual weight matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.compile">
+<code class="sig-name descname">compile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.compile" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function compiles the keras model of the complete resVAE network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.describe_model">
+<code class="sig-name descname">describe_model</code><span class="sig-paren">(</span><em class="sig-param">model: str = 'rlvae'</em>, <em class="sig-param">plot=False</em>, <em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.describe_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates summaries of the model architecture, prints them to stdout and optionally saves them as .png files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – Model to show (one value or a list of ‘encoder’, ‘decoder’, or ‘rlvae’)</p></li>
+<li><p><strong>plot</strong> – Boolean indicating whether to plot the model architectures as .png</p></li>
+<li><p><strong>filename</strong> – Filenames for the plots generated. Either a single string or a list with the same length as the model list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">exprs=None</em>, <em class="sig-param">classes=None</em>, <em class="sig-param">model_dir=None</em>, <em class="sig-param">model_name='my_rlvae'</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to fit the complete resVAE model to the provided training data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exprs</strong> – Input matrix (samples x features)</p></li>
+<li><p><strong>classes</strong> – One-hot encoded or partial class identity matrix (samples x classes)</p></li>
+<li><p><strong>model_dir</strong> – Directory to save training logs in</p></li>
+<li><p><strong>model_name</strong> – Name of the model (for log files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns a keras history object and a dictionary with scores</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.get_gene_biases">
+<code class="sig-name descname">get_gene_biases</code><span class="sig-paren">(</span><em class="sig-param">relative: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.get_gene_biases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the biases of the last (output layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>relative</strong> – Outputs absolute biases relative to the absolute sum of inbound weight mappings</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a 1D numpy ndarray of biases, length (genes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.get_latent_space">
+<code class="sig-name descname">get_latent_space</code><span class="sig-paren">(</span><em class="sig-param">exprs: numpy.ndarray</em>, <em class="sig-param">classes: numpy.ndarray</em>, <em class="sig-param">cluster_index=None</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.get_latent_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to return the activation of the latent space, given an input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exprs</strong> – Expression matrix (samples x genes)</p></li>
+<li><p><strong>classes</strong> – One-hot encoded class matrix (samples x classes)</p></li>
+<li><p><strong>cluster_index</strong> – The index of the cluster (according to the one-hot encoding) to be extracted. If None, returns all clusters</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a numpy array of shape samples x neurons containing the neuron activations by each sample</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.get_latent_to_gene">
+<code class="sig-name descname">get_latent_to_gene</code><span class="sig-paren">(</span><em class="sig-param">normalized: bool = False</em>, <em class="sig-param">direction: bool = True</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.get_latent_to_gene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the weight mappings from the latent space (i.e. each cell type) to the output layer embedding the genes. Propagation of weights is realized as matrix multiplication of each intermediate layer’s weight matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>normalized</strong> – Whether to normalize the results by gene (default: False)</p></li>
+<li><p><strong>direction</strong> – Return absolute (False) or directional (True) weights. (default: True)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Neuron-to-gene mappings for the hidden layer (pd.DataFrame)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.get_neuron_to_gene">
+<code class="sig-name descname">get_neuron_to_gene</code><span class="sig-paren">(</span><em class="sig-param">normalized: bool = False</em>, <em class="sig-param">initial_layer: int = 1</em>, <em class="sig-param">direction: bool = True</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.get_neuron_to_gene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the weight mappings from intermediate decoder layer neurons to the output layer with gene embeddings. Weight propagation is realized by matrix multiplication of weight matrices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>normalized</strong> – Whether to normalize the results by gene (default: False)</p></li>
+<li><p><strong>initial_layer</strong> – Index of the decoder layer to output mappings for (default: 1)</p></li>
+<li><p><strong>direction</strong> – Return absolute (False) or directional (True) weights. (default: True)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Neuron-to-gene mappings for a decoder layer (pd.DataFrame)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.load_config">
+<code class="sig-name descname">load_config</code><span class="sig-paren">(</span><em class="sig-param">infile: str = 'models/config.json'</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.load_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a config file stored as json.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>infile</strong> – Path to the .json file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.load_model">
+<code class="sig-name descname">load_model</code><span class="sig-paren">(</span><em class="sig-param">model_file</em>, <em class="sig-param">model_weights</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.load_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to load models and their weights.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_file</strong> – File including path of the *_resvae.* model</p></li>
+<li><p><strong>model_weights</strong> – File including path of the *_resvae_weights.h5 weights</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.load_model_new">
+<code class="sig-name descname">load_model_new</code><span class="sig-paren">(</span><em class="sig-param">model_dir: str</em>, <em class="sig-param">model_name: str = 'my_model'</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.load_model_new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to load models and their weights.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_dir</strong> – Directory in which the model was saved</p></li>
+<li><p><strong>model_name</strong> – base name of the model</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.mappings_to_file">
+<code class="sig-name descname">mappings_to_file</code><span class="sig-paren">(</span><em class="sig-param">filename: str = 'mappings.hdf5'</em>, <em class="sig-param">normalized: bool = True</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.mappings_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This saves the weight mappings to a hdf5 file that can later be imported into the frontend.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – The name of the weight mappings file.</p></li>
+<li><p><strong>normalized</strong> – Whether to save normalized weights. default: True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.save_config">
+<code class="sig-name descname">save_config</code><span class="sig-paren">(</span><em class="sig-param">outfile: str = 'models/config.json'</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.save_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the config variable as json file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>outfile</strong> – Path to the desired output file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.save_model_new">
+<code class="sig-name descname">save_model_new</code><span class="sig-paren">(</span><em class="sig-param">model_dir: str</em>, <em class="sig-param">model_name: str = 'my_model'</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.save_model_new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to save model weights and configurations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_dir</strong> – Directory to save model in</p></li>
+<li><p><strong>model_name</strong> – Base name of the model files (default: my_model)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.simulate">
+<code class="sig-name descname">simulate</code><span class="sig-paren">(</span><em class="sig-param">classes</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>This generates simulated values based on just the decoder part of resVAE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>classes</strong> – Input for the latent space (samples x (classes * latent scale factor))</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Simulated values</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="resVAE.resvae.resVAE.smooth">
+<code class="sig-name descname">smooth</code><span class="sig-paren">(</span><em class="sig-param">exprs</em>, <em class="sig-param">classes</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.resvae.resVAE.smooth" title="Permalink to this definition">¶</a></dt>
+<dd><p>This generates smoothed values, i.e. values output by the complete resVAE model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exprs</strong> – Matrix with values to be smoothed (samples x features)</p></li>
+<li><p><strong>classes</strong> – One-hot encoded or partial class identity matrix (samples x classes)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Smoothed value estimates</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-resVAE.reporting">
+<span id="reporting"></span><h2>Reporting<a class="headerlink" href="#module-resVAE.reporting" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="resVAE.reporting.generate_html_report">
+<code class="sig-prename descclassname">resVAE.reporting.</code><code class="sig-name descname">generate_html_report</code><span class="sig-paren">(</span><em class="sig-param">weights: pandas.core.frame.DataFrame</em>, <em class="sig-param">path: str</em>, <em class="sig-param">neurons_use=None</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.reporting.generate_html_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates an HTML report for the resVAE results representing the weight mapping of an individual layers, and writes this to file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weights</strong> – pandas DataFrame containing the weight mappings</p></li>
+<li><p><strong>path</strong> – path to the output file</p></li>
+<li><p><strong>neurons_use</strong> – Which neurons to generate the report for. None type indicates a report for all neurons of this layer</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-resVAE.utils">
+<span id="utility-functions"></span><h2>Utility functions<a class="headerlink" href="#module-resVAE.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="resVAE.utils.calculate_elbow">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">calculate_elbow</code><span class="sig-paren">(</span><em class="sig-param">weights: numpy.ndarray</em>, <em class="sig-param">negative: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.calculate_elbow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the position of the elbow point for each weight matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weights</strong> – A 1D or 2D numpy ndarray of length genes or shape neurons x genes containing weight mappings</p></li>
+<li><p><strong>negative</strong> – Boolean indicating whether to return negatively enriched indices (default: False)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns an integer (1D input) or 1D numpy ndarray (2D input) with the position of the elbow point along a sorted axis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.calculate_fpc">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">calculate_fpc</code><span class="sig-paren">(</span><em class="sig-param">weight_matrix: numpy.ndarray</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.calculate_fpc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to calculate the fuzzy partition coefficient.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>weight_matrix</strong> – A numpy array with the neuron to gene mappings</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The fuzzy partition coefficient of the weight matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.calculate_gmt_overlap">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">calculate_gmt_overlap</code><span class="sig-paren">(</span><em class="sig-param">pathways</em>, <em class="sig-param">genelist</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.calculate_gmt_overlap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to calculate the overlap between a gene set and any gene sets defined in a gmt file (nested list)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pathways</strong> – A nested list such as would be obtained from running the read_json function</p></li>
+<li><p><strong>genelist</strong> – Either a single list of genes to test, or a 2D numpy array with gene lists in columns</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>returns a numpy array with overlap counts</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.compose_dataframe">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">compose_dataframe</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">index</em>, <em class="sig-param">columns</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.compose_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to convert a numpy array to a pandas DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array</strong> – the np.ndarray to convert</p></li>
+<li><p><strong>index</strong> – row names</p></li>
+<li><p><strong>columns</strong> – column names</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a pandas DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.decompose_dataframe">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">decompose_dataframe</code><span class="sig-paren">(</span><em class="sig-param">df</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.decompose_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to decompose a pandas DataFrame to numpy ndarrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df</strong> – a pandas DataFrame</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>three np.ndarrays with the data, row names, and column names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.download_gmt">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">download_gmt</code><span class="sig-paren">(</span><em class="sig-param">url: str</em>, <em class="sig-param">destination: str = None</em>, <em class="sig-param">file_name: str = None</em>, <em class="sig-param">replace: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.download_gmt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to download .gmt pathway files into the correct subfolder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> – The URL of the gmt files.</p></li>
+<li><p><strong>destination</strong> – Destination directory. If left blank, defaults to ‘gmts/’</p></li>
+<li><p><strong>file_name</strong> – The file name to write to disk. If left blank, is left unchanged from the download source files name.</p></li>
+<li><p><strong>replace</strong> – Boolean indicating whether to overwrite if the file name already exists.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.get_wikipathways">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">get_wikipathways</code><span class="sig-paren">(</span><em class="sig-param">organism: str</em>, <em class="sig-param">destination: str = None</em>, <em class="sig-param">file_name: str = None</em>, <em class="sig-param">replace=False</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.get_wikipathways" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to quickly download WikiPathway data. A wrapper for download_gmt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>organism</strong> – String (one of ‘hs’, ‘mm’, ‘rn’, ‘dr’, ‘dm’) to select download of the pathway data for either human, mouse, rat, zebra fish, or fruit fly.</p></li>
+<li><p><strong>destination</strong> – Destination directory. If left blank, defaults to ‘gmts/’</p></li>
+<li><p><strong>file_name</strong> – The file name to write to disk. If left blank, is left unchanged from the download source files name.</p></li>
+<li><p><strong>replace</strong> – Boolean indicating whether to overwrite if the file name already exists.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.gmt_to_json">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">gmt_to_json</code><span class="sig-paren">(</span><em class="sig-param">infile: str</em>, <em class="sig-param">outfile: str = None</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.gmt_to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to convert .gmt pathway files to json and write them to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>infile</strong> – Path of the input file to convert.</p></li>
+<li><p><strong>outfile</strong> – Output path of the corresponding .json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.load_exprs">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">load_exprs</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">sep: str = '</em>, <em class="sig-param">'</em>, <em class="sig-param">order: str = 'cg'</em>, <em class="sig-param">sparse=None</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.load_exprs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to load expression matrices, extract gene names, and return both
+:param path: Path to the expression matrix
+:param sep: Separator used in the expression file (default: ‘,’)
+:return: a 2D numpy ndarray with the expression values and a pandas index object containing the ordered gene names</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.load_sparse">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">load_sparse</code><span class="sig-paren">(</span><em class="sig-param">sparse_matrix_path</em>, <em class="sig-param">index_txt_file_path</em>, <em class="sig-param">column_txt_file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.load_sparse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to load a sparse matrix with row and column names as txt files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sparse_matrix_path</strong> – Path to sparse matrix</p></li>
+<li><p><strong>index_txt_file_path</strong> – Path to row names</p></li>
+<li><p><strong>column_txt_file_path</strong> – Path to column names</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A DataFrame of a sparse matrix with row and column names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.load_sparse_matrix">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">load_sparse_matrix</code><span class="sig-paren">(</span><em class="sig-param">sparse_matrix_path</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.load_sparse_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to load a sparse matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sparse_matrix_path</strong> – Path to matrix file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>returns a np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.load_txt_file">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">load_txt_file</code><span class="sig-paren">(</span><em class="sig-param">txt_file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.load_txt_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to load a text file as list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>txt_file_path</strong> – The path to the file (must be .txt)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The file content in list format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.mixed_encoder">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">mixed_encoder</code><span class="sig-paren">(</span><em class="sig-param">classes: numpy.ndarray</em>, <em class="sig-param">extra_dim_reserve=False</em>, <em class="sig-param">extra_dim_num=20</em>, <em class="sig-param">leave_out=None</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.mixed_encoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixed resVAE/VAE encoder: leave unrestricted dimensions to capture unknown effects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>classes</strong> – np.ndarray with class assignments.</p></li>
+<li><p><strong>extra_dim_reserve</strong> – Whether to reserve extra (unrestricted) dimensions (default: False)</p></li>
+<li><p><strong>extra_dim_num</strong> – Number of extra dimensions (default: 20)</p></li>
+<li><p><strong>leave_out</strong> – Whether to leave out a certain class (default: None)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>returns a one-hot encoded class matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.normalize_count_matrix">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">normalize_count_matrix</code><span class="sig-paren">(</span><em class="sig-param">exprs: numpy.ndarray</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.normalize_count_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to normalize a count matrix for the samples to sum to one. Wrapper for sklearn.preprocessing.Normalizer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>exprs</strong> – 2D numpy ndarray of shape samples x genes containing the gene expression values to be normalized to unit norm</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a 2D numpy array of shape samples x genes of normalized expression values and a fitted instance of sklearn.preprocessing.Normalizer to be used for reconverting expression values after training resVAE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.one_hot_encoder">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">one_hot_encoder</code><span class="sig-paren">(</span><em class="sig-param">classes: numpy.ndarray</em>, <em class="sig-param">extra_dim_reserve=False</em>, <em class="sig-param">extra_dim_num=20</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.one_hot_encoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>A utility function to transform dense labels into sparse (one-hot encoded) ones. This wraps LabelEncoder from sklearn.preprocessing and to_categorical from keras.utils. If non-integer labels are supplied, the fitted LabelEncoder is returned as well.
+:param classes: A 1D numpy ndarray of length samples containing the individual samples class labels.
+:return: A 2D numpy ndarray of shape samples x classes and a None type if class labels were integers or a fitted instance of class sklearn.preprocessing.LabelEncder</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.one_hot_encoder_old">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">one_hot_encoder_old</code><span class="sig-paren">(</span><em class="sig-param">classes: numpy.ndarray</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.one_hot_encoder_old" title="Permalink to this definition">¶</a></dt>
+<dd><p>A utility function to transform dense labels into sparse (one-hot encoded) ones. This wraps LabelEncoder from sklearn.preprocessing and to_categorical from keras.utils. If non-integer labels are supplied, the fitted LabelEncoder is returned as well.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>classes</strong> – A 1D numpy ndarray of length samples containing the individual samples class labels.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A 2D numpy ndarray of shape samples x classes and a None type if class labels were integers or a fitted instance of class sklearn.preprocessing.LabelEncder</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.read_json">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">read_json</code><span class="sig-paren">(</span><em class="sig-param">infile: str</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.read_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to read a .json and report the result as a list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>infile</strong> – Path to the input .json.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of gne-pathway mappings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.write_sparse">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">write_sparse</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">sparse_matrix_path</em>, <em class="sig-param">index_txt_file_path</em>, <em class="sig-param">column_txt_file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.write_sparse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to write a DataFrame as sparse matrix, with row and column names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – The DataFrame to write to file</p></li>
+<li><p><strong>sparse_matrix_path</strong> – File path to write the sparse matrix to</p></li>
+<li><p><strong>index_txt_file_path</strong> – row name file path</p></li>
+<li><p><strong>column_txt_file_path</strong> – column name file path</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.write_sparse_matrix">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">write_sparse_matrix</code><span class="sig-paren">(</span><em class="sig-param">sparse_matrix</em>, <em class="sig-param">sparse_matrix_path</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.write_sparse_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to write a sparse matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sparse_matrix</strong> – Sparse matrix to write to file.</p></li>
+<li><p><strong>sparse_matrix_path</strong> – File name/path to write.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="resVAE.utils.write_txt_file">
+<code class="sig-prename descclassname">resVAE.utils.</code><code class="sig-name descname">write_txt_file</code><span class="sig-paren">(</span><em class="sig-param">txt_file_path</em>, <em class="sig-param">array</em><span class="sig-paren">)</span><a class="headerlink" href="#resVAE.utils.write_txt_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to write a txt file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>txt_file_path</strong> – The path and filename to write at</p></li>
+<li><p><strong>array</strong> – The np.ndarray to write to file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-resVAE.config">
+<span id="configuration-file"></span><h2>Configuration file<a class="headerlink" href="#module-resVAE.config" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="references.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Soeren Lukassen
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
