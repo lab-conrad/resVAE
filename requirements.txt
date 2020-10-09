@@ -1,0 +1,8 @@
+urllib3
+scikit-learn
+keras
+numpy
+pandas
+matplotlib
+seaborn
+tables
