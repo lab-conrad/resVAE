@@ -1,2 +1,2 @@
-name = 'rlvae'
+name = 'resvae'
 
