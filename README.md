@@ -1,5 +1,7 @@
 # resVAE - a restricted latent variational autoencoder
 
+[![DOI](https://zenodo.org/badge/302657137.svg)](https://zenodo.org/badge/latestdoi/302657137)
+
 [Preprint on BioRxiv](https://www.biorxiv.org/content/10.1101/740415v2)
 
 resVAE is a restricted latent variational autoencoder that we wrote to uncover hidden structures in gene expression data, especially using single-cell RNA sequencing. In principle it can be used with any hierarchically structured data though, so feel free to play around with it.
