@@ -25,6 +25,7 @@ setup(
         'tensorflow-gpu==1.15.4',
         'numpy',
         'scipy',
+        'h5py',
         'pandas',
         'matplotlib',
         'seaborn',
