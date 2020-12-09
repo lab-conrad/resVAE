@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/302657137.svg)](https://zenodo.org/badge/latestdoi/302657137)
 
-[Preprint on BioRxiv](https://www.biorxiv.org/content/10.1101/740415v2)
+[Paper on Nature Machine Intelligence](https://www.nature.com/articles/s42256-020-00269-9) | [Preprint on BioRxiv](https://www.biorxiv.org/content/10.1101/740415v2)
 
 resVAE is a restricted latent variational autoencoder that we wrote to uncover hidden structures in gene expression data, especially using single-cell RNA sequencing. In principle it can be used with any hierarchically structured data though, so feel free to play around with it.
 
@@ -11,7 +11,7 @@ resVAE is a restricted latent variational autoencoder that we wrote to uncover h
 Briefly, resVAE is not too different from a standard variational autoencoder. In case you are not familiar with artificial neural networks, imagine an algorithm that compresses data, forces the compressed representation to have a specific distribution (in our case, a Gaussian), and decompresses the data again. If you are more familiar with (variational) autoencoders, but fancy a quick reminder, have a look at this excellent [explanation](https://arxiv.org/abs/1906.02691) by Kingma and Welling.
 resVAE deviates from this idea in some aspects. One is that we use preclustered data, and feed the identity function of those clusters to the latent space of our network. Thus, we reserve dimensions for individual classes such as cell types, while keeping the encoder and decoder parts of the network the same. In the context of gene expression, this forces the network to learn features that are shared across cell types, but may be more or less active in one cell type or the other. Having reserved dimensions in the latent space allows us to easily map these features to say cell types or disease states. As it turns out, this enables the identification of functional gene sets, including the possibility of correcting this gene set inference for batch effects or treatment groups by encoding these in the latent variable space.
 
-For more information regarding resVAE, please read our [preprint on BioRxiv](https://www.biorxiv.org/content/10.1101/740415v2).
+For more information regarding resVAE, please read our [BioRxiv preprint](https://www.biorxiv.org/content/10.1101/740415v2) or [Nature Machine Intelligence paper](https://www.nature.com/articles/s42256-020-00269-9).
 
 ## Getting started
 
