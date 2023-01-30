@@ -6,7 +6,7 @@
 
 resVAE is a restricted latent variational autoencoder that we wrote to uncover hidden structures in gene expression data, especially using single-cell RNA sequencing. In principle it can be used with any hierarchically structured data though, so feel free to play around with it.
 
-* **Update: Check out the new [resVAE ensemble](https://github.com/lab-conrad/resVAE-ensemble)!**
+* **✨ Update: Check out the new [resVAE ensemble](https://github.com/lab-conrad/resVAE-ensemble)! ✨**
 
 ## How does resVAE work?
 
